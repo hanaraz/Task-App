@@ -4,6 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import useStyles from './styles';
+import { addTask } from '../redux/actions/tasks';
 
 const AddTask = () => {
 
@@ -16,16 +17,16 @@ const AddTask = () => {
         setTask(newTask);
     }
 
-    const addTask = (e) => {
+    const handleClick = (e) => {
         e.preventDefault();
         console.log(task);
-        dispatch({type:'ADD_TASK' , payload:task})
+        dispatch(addTask(task));
     }
 
     return (
         <div className={classes.input}>
             <TextField name="task" vlue={task} onChange={handleChange} placeholder="New Task" variant="outlined" size="small" />
-            <Button onClick={addTask}>
+            <Button onClick={handleClick}>
                 <AddIcon fontSize="large" />
             </Button>
          

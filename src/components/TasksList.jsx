@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 const TasksList = () => {
 
     const classes = useStyles();
-    const tasks = useSelector(state => state.task);
+    const tasks = useSelector(state => state.tasks);
     console.log("tasks");
     console.log(tasks);
 
@@ -17,9 +17,9 @@ const TasksList = () => {
         <div>
             <List>
 
-                {tasks.map(task => (
-                    <ListItem className={classes.item} >
-                        <Task key={task} task={task} />
+                {tasks.map((task , index) => (
+                    <ListItem key={index} className={classes.item} >
+                        <Task  task={task} />
                     </ListItem>
 
                 ))}
