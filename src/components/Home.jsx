@@ -1,9 +1,10 @@
 import React from 'react'
 import Container from '@material-ui/core/Container';
 import { Typography } from '@material-ui/core';
-import Input from './Input';
+import AddTask from './AddTask';
 import useStyles from "./styles";
-import Tasks  from './Tasks';
+import TasksList  from './TasksList';
+import VisibilityFilters from './VisibilityFilters';
 
 const Home = () => {
 
@@ -12,8 +13,9 @@ const Home = () => {
     return (
         <Container maxWidth="sm" style={{ backgroundColor: "white" , minHeight:"100vh" }}>
             <Typography className={classes.header} variant="h3" style={{textAlign:"center"}}>My Tasks</Typography>
-            <Input />
-            <Tasks />
+            <AddTask />
+            <TasksList />
+            <VisibilityFilters />
 
         </Container>
 
