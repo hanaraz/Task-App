@@ -3,33 +3,43 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles((theme) => ({
     input: {
         paddingLeft: theme.spacing(18),
-        padding: theme.spacing(2),
-        margin: theme.spacing(3),
+        // padding: theme.spacing(2),
+        marginLeft: theme.spacing(3),
+        marginTop: theme.spacing(3),
+
     },
 
     header: {
         paddingTop: theme.spacing(10),
     },
 
-    btnTask: {
-        left: "8rem"
-    },
+
 
     item: {
         // border: "solid",
         // borderColor: "grey",
-        marginBottom: theme.spacing(1),
+        // marginBottom: theme.spacing(1),
         // borderRadius: 30,
-        width: "90%",
-        left: "6rem"
+        // width: "90%",
+        // left: "6rem"
     },
 
-    filterButtons: {
-        paddingLeft: theme.spacing(15),
-        marginTop: theme.spacing(5),
+    filter: {
+        textAlign: "center",
+        margin: theme.spacing(2),
 
 
 
     },
+
+
+    paper: {
+        margin: "auto",
+        padding: 10,
+        display: "flex",
+        alignItems: "center",
+        marginTop: 10,
+        width: 500
+    }
 
 }))

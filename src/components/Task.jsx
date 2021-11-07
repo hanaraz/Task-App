@@ -1,33 +1,48 @@
 import React from 'react'
 import DoneIcon from '@material-ui/icons/Done';
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Box, Button } from '@material-ui/core';
-import useStyles from './styles';
+import { Button } from '@material-ui/core';
+// import useStyles from './styles';
 
-const Task = ({task}) => {
 
-    const classes = useStyles();
+const Task = ({ task, setTasksList, tasksList }) => {
+
+    // const classes = useStyles();
+
+    const deleteItem = () => {
+        setTasksList(tasksList.filter(t => t.id !== task.id)
+        )
+    }
+
+
+    const handleComplete = () => {
+        const newList = tasksList.map(t => {
+            if (t.id === task.id) {
+                t.completed = !t.completed;
+            }
+            return t;
+        })
+        setTasksList(newList);
+    }
+
+
 
     return (
-        <Box>
-            <Button>
-                <DoneIcon />
-            </Button>
-
-            {task}
-
-            <Button className={classes.btnTask}>
-                <EditIcon />
-            </Button>
-
-            <Button className={classes.btnTask}>
+        <div>
+            <Button onClick={deleteItem} >
                 <DeleteIcon />
             </Button>
-        </Box>
+
+            <Button onClick={handleComplete}  >
+                <DoneIcon />
+            </Button>
+            <span style={{textDecoration: task.completed && "line-through"}}>{task.input}</span>
+        </div>
+
+
 
     )
-} 
- 
- 
-    export default Task;
+}
+
+
+export default Task;

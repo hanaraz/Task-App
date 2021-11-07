@@ -1,36 +1,37 @@
-import { Button, TextField  } from '@material-ui/core'
-// import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { Button, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add';
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
 import useStyles from './styles';
-import { addTask } from '../redux/actions/tasks';
 
-const AddTask = () => {
+
+const AddTask = ({ task, setTask, tasksList, setTasksList }) => {
 
     const classes = useStyles();
-    const dispatch = useDispatch();
-    const [task , setTask] = useState("");
 
-    const handleChange = (e) => {
-        const newTask = e.target.value;
-        setTask(newTask);
+    const [idCreator, setIdCreator] = useState(0);
+
+
+    const addItem = (e) => {
+        e.preventDefault();
+
+        setTasksList([...tasksList, {id:idCreator , input:task , completed:false}])
+        setIdCreator(idCreator + 1);
+        setTask("");
+
+        console.log(tasksList);
+
     }
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        console.log(task);
-        dispatch(addTask(task));
+    const handleChange = (e) => {
+        setTask(e.target.value);
     }
 
     return (
         <div className={classes.input}>
-            <TextField name="task" vlue={task} onChange={handleChange} placeholder="New Task" variant="outlined" size="small" />
-            <Button onClick={handleClick}>
-                <AddIcon fontSize="large" />
-            </Button>
-         
- 
+                <TextField value={task} onChange={handleChange} type="text" name="input" placeholder="New Task" variant="outlined" size="small" />
+                <Button onClick={addItem}  >
+                    <AddIcon fontSize="large" />
+                </Button>
 
         </div>
     )
