@@ -3,13 +3,13 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import useStyles from './styles';
 
 
-const FilterStatus = ({ status, setStatus }) => {
+const FilterStatus = ({ setStatus }) => {
 
     const classes = useStyles();
 
 
     const changeStatus = (e) => {
-        console.log(e.target.value);
+        setStatus(e.target.value);
 
 
     }

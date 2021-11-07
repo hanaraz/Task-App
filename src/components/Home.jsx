@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '@material-ui/core/Container';
 import { Typography } from '@material-ui/core';
 import AddTask from './AddTask';
@@ -15,17 +15,34 @@ const Home = () => {
     const [task, setTask] = useState("");
     const [tasksList, setTasksList] = useState([]);
     const [status, setStatus] = useState("all");
-    
+    const [filterList, setFilterList] = useState([]);
 
+    useEffect(() => {
+        handleFilter();
+    } , [tasksList ,status])
 
+    const handleFilter = () => {
+        switch (status) {
+            case "completed":
+                setFilterList(tasksList.filter(t => t.completed === true));
+                break;
 
+            case "uncompleted":
+                setFilterList(tasksList.filter(t => t.completed === false));
+                break;
+
+            default:
+                setFilterList(tasksList);
+                
+        }
+    }
 
     return (
         <Container maxWidth="sm" style={{ backgroundColor: "white", minHeight: "100vh" }}>
             <Typography className={classes.header} variant="h3" style={{ textAlign: "center" }}>My Tasks</Typography>
-            <AddTask tasksList={tasksList} setTasksList={setTasksList} task={task} setTask={setTask}  />
-            <FilterStatus status={status} setStatus={setStatus} />
-            <TasksList tasksList={tasksList} setTasksList={setTasksList} setTask={setTask}  />
+            <AddTask tasksList={tasksList} setTasksList={setTasksList} task={task} setTask={setTask} />
+            <FilterStatus setStatus={setStatus} />
+            <TasksList filterList={filterList} tasksList={tasksList} setTasksList={setTasksList} setTask={setTask} />
         </Container>
 
     )
