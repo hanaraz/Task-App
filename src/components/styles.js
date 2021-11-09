@@ -1,45 +1,40 @@
 import { makeStyles } from "@material-ui/core";
+import { createTheme } from "@material-ui/core";
 
-export default makeStyles((theme) => ({
-    input: {
-        paddingLeft: theme.spacing(18),
-        // padding: theme.spacing(2),
-        marginLeft: theme.spacing(3),
-        marginTop: theme.spacing(3),
+export const useStyles = makeStyles((theme) => ({
 
+    container: {
+        minHeight: "100vh",
+        position: "relative",
+        padding: theme.spacing(5),
+        borderRadius: 10,
+        backgroundColor: "#DDDDDD",
     },
 
     header: {
-        paddingTop: theme.spacing(10),
+        margin: theme.spacing(2, 0, 4, 0),
     },
 
-
-
-    item: {
-        // border: "solid",
-        // borderColor: "grey",
-        // marginBottom: theme.spacing(1),
-        // borderRadius: 30,
-        // width: "90%",
-        // left: "6rem"
+    task: {
+        position: "relative",
+        marginBottom: theme.spacing(1)
     },
 
-    filter: {
-        textAlign: "center",
-        margin: theme.spacing(2),
-
-
-
+    deleteBtn: {
+        position: "absolute",
+        right: 0
     },
 
-
-    paper: {
-        margin: "auto",
-        padding: 10,
-        display: "flex",
-        alignItems: "center",
-        marginTop: 10,
-        width: 500
+    select: {
+        margin: theme.spacing(1, 0, 3, 0),
     }
-
 }))
+
+export const theme = createTheme({
+    typography: {
+        fontFamily: [
+            'Montserrat',
+            'sans-serif',
+        ].join(','),
+    },
+});

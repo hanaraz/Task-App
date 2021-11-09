@@ -1,10 +1,14 @@
 import Home from "./components/Home";
+import { theme } from "./components/styles";
+import { ThemeProvider } from '@material-ui/core';
+
+
 
 function App() {
   return (
-    <div>
-    <Home />
-    </div>
+    <ThemeProvider theme={theme}>
+      <Home />
+    </ThemeProvider>
   );
 }
 
